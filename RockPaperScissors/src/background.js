@@ -19,19 +19,67 @@ function createMovingDiv(id) {
   const movingDiv = document.createElement('div');
   movingDiv.id = `moving-div-${id}`;
   movingDiv.classList.add('moving-div');
+
   const img = document.createElement('img');
   img.src = randomImg();
+
   movingDiv.append(img);
+
   return movingDiv;
 }
 
-function createBgDiv() {
+function createBgDiv(numMovingDiv = 18) {
   const bgDiv = document.createElement('div');
   bgDiv.classList.add('bg-moving-div-container');
-  for (let i = 0; i < 10; i += 1) {
+
+  for (let i = 0; i < numMovingDiv; i += 1) {
     bgDiv.append(createMovingDiv(i));
   }
-  document.body.append(bgDiv);
+
+  return bgDiv;
 }
 
-export default createBgDiv;
+function applyMovingDivTopCSS() {
+  let topPos = 0;
+  const movingDivs = document.querySelectorAll('.moving-div');
+
+  movingDivs.forEach((movingDiv) => {
+    const temp = movingDiv;
+    temp.style.top = `${topPos}%`;
+    topPos += 5;
+  });
+}
+
+function applyMovingDivAnimationCSS() {
+  const movingDivs = document.querySelectorAll('.moving-div');
+
+  function animationLoop(movingDiv) {
+    const tempMovingDiv = movingDiv;
+
+    function startAnimationLoop() {
+      tempMovingDiv.style.animationDuration = '4s';
+      tempMovingDiv.style.animationDelay = '1s';
+      tempMovingDiv.classList.add('moving-div-animated');
+    }
+
+    function endAnimationLoop() {
+      tempMovingDiv.classList.remove('moving-div-animated');
+      setTimeout(() => startAnimationLoop(tempMovingDiv), 100);
+    }
+
+    startAnimationLoop(tempMovingDiv);
+    tempMovingDiv.addEventListener('animationend', endAnimationLoop);
+  }
+
+  movingDivs.forEach((movingDiv) => {
+    animationLoop(movingDiv);
+  });
+}
+
+function startBg() {
+  document.body.append(createBgDiv());
+  applyMovingDivTopCSS();
+  applyMovingDivAnimationCSS();
+}
+
+export default startBg;

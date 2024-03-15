@@ -1,5 +1,5 @@
 import './css/style.css';
 
-import createBgDiv from './background';
+import startBg from './background';
 
-createBgDiv();
+startBg();
