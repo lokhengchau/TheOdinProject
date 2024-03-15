@@ -21,7 +21,6 @@ function createMovingDiv(id) {
   movingDiv.classList.add('moving-div');
 
   const img = document.createElement('img');
-  img.src = randomImg();
 
   movingDiv.append(img);
 
@@ -57,8 +56,9 @@ function applyMovingDivAnimationCSS() {
     const tempMovingDiv = movingDiv;
 
     function startAnimationLoop() {
-      tempMovingDiv.style.animationDuration = '4s';
-      tempMovingDiv.style.animationDelay = '1s';
+      tempMovingDiv.querySelector('img').src = randomImg();
+      tempMovingDiv.style.animationDuration = `${Math.random() * 5 + 2}s`;
+      tempMovingDiv.style.animationDelay = `${Math.random() * 3 + 0.5}s`;
       tempMovingDiv.classList.add('moving-div-animated');
     }
 
