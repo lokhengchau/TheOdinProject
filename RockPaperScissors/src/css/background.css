@@ -10,6 +10,7 @@
   width: 100px;
   position: absolute;
   left: -20%;
+  user-select: none;
 }
 
 .moving-div-animated {
