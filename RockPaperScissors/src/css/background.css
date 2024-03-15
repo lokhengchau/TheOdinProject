@@ -1,0 +1,43 @@
+.bg-moving-div-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.moving-div {
+  width: 100px;
+  position: absolute;
+  left: -20%;
+}
+
+.moving-div-animated {
+  animation-name: move-right;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+.moving-div img {
+  width: 100%;
+}
+
+@keyframes move-right {
+  from {
+    opacity: 0;
+    left: -20%;
+    transform: rotate(0deg);
+  }
+
+  40% {
+    left: 36%;
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 120%;
+    transform: rotate(720deg);
+  }
+}

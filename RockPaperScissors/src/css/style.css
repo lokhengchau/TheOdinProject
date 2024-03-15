@@ -7,20 +7,5 @@
 body {
   min-height: 100vh;
   position: relative;
-}
-
-.bg-moving-div-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.moving-div {
-  width: 100px;
-}
-
-.moving-div img {
-  width: 100%;
+  overflow: hidden;
 }
