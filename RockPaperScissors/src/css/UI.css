@@ -50,7 +50,24 @@
   background-color: white;
   opacity: 0;
   z-index: 10;
+}
+
+.intro-curtain-rev {
+  opacity: 1;
+}
+
+.intro-curtain-close {
   animation-name: increase-opacity;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-duration: 3s;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+}
+
+.intro-curtain-open {
+  animation-name: decrease-opacity;
   animation-timing-function: linear;
   animation-iteration-count: 1;
   animation-direction: normal;
@@ -70,5 +87,15 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes decrease-opacity {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

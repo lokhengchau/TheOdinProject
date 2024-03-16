@@ -84,5 +84,7 @@ export function startBg() {
 
 export function removeBg() {
   const bgDiv = document.querySelector('.bg-moving-div-container');
-  bgDiv.remove();
+  if (bgDiv) {
+    bgDiv.remove();
+  }
 }

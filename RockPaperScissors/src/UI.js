@@ -2,6 +2,13 @@ import './css/UI.css';
 
 import { removeBg } from './background';
 
+function createGameUI() {
+  const gameDiv = document.createElement('div');
+  gameDiv.classList.add('game-wrapper');
+  gameDiv.innerText = 'I am here';
+  return gameDiv;
+}
+
 function createIntroUI() {
   const divWrap = document.createElement('div');
   divWrap.classList.add('intro-container');
@@ -31,20 +38,36 @@ function createIntroUI() {
 
 function removeIntroDiv() {
   const introDiv = document.querySelector('.intro-container');
-  introDiv.remove();
+  if (introDiv) {
+    introDiv.remove();
+  }
 }
 
-function hideIntroUI() {
+function fadeInCurtain() {
   const divCurtain = document.createElement('div');
-  divCurtain.classList.add('intro-curtain');
-
+  divCurtain.classList.add('intro-curtain', 'intro-curtain-close');
   document.body.append(divCurtain);
+  return divCurtain;
+}
 
-  divCurtain.addEventListener('animationend', () => {
+function fadeOutCurtain() {
+  const divCurtainRev = document.createElement('div');
+  divCurtainRev.classList.add('intro-curtain', 'intro-curtain-rev', 'intro-curtain-open');
+  document.body.append(divCurtainRev);
+  return divCurtainRev;
+}
+
+function transitionIntroGame() {
+  const divFadeIn = fadeInCurtain();
+  divFadeIn.addEventListener('animationend', () => {
     removeBg();
     removeIntroDiv();
-    divCurtain.remove();
-    // showgameUI
+    divFadeIn.remove();
+    document.body.append(createGameUI());
+    const divFadeOut = fadeOutCurtain();
+    divFadeOut.addEventListener('animationend', () => {
+      divFadeOut.remove();
+    });
   });
 }
 
@@ -52,7 +75,7 @@ function startUI() {
   document.body.append(createIntroUI());
   const btnStart = document.getElementById('btn-start');
 
-  btnStart.addEventListener('click', () => hideIntroUI());
+  btnStart.addEventListener('click', () => transitionIntroGame());
 }
 
 export default startUI;
