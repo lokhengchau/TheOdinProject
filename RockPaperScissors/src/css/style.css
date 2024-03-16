@@ -13,8 +13,13 @@ body {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 html {
   font-family: ManaSpace;
+  font-size: 16px;
 }

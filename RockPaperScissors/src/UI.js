@@ -1,3 +1,7 @@
+import './css/UI.css';
+
+import { removeBg } from './background';
+
 function createIntroUI() {
   const divWrap = document.createElement('div');
   divWrap.classList.add('intro-container');
@@ -25,8 +29,30 @@ function createIntroUI() {
   return divWrap;
 }
 
+function removeIntroDiv() {
+  const introDiv = document.querySelector('.intro-container');
+  introDiv.remove();
+}
+
+function hideIntroUI() {
+  const divCurtain = document.createElement('div');
+  divCurtain.classList.add('intro-curtain');
+
+  document.body.append(divCurtain);
+
+  divCurtain.addEventListener('animationend', () => {
+    removeBg();
+    removeIntroDiv();
+    divCurtain.remove();
+    // showgameUI
+  });
+}
+
 function startUI() {
   document.body.append(createIntroUI());
+  const btnStart = document.getElementById('btn-start');
+
+  btnStart.addEventListener('click', () => hideIntroUI());
 }
 
 export default startUI;

@@ -76,10 +76,13 @@ function applyMovingDivAnimationCSS() {
   });
 }
 
-function startBg() {
+export function startBg() {
   document.body.append(createBgDiv());
   applyMovingDivTopCSS();
   applyMovingDivAnimationCSS();
 }
 
-export default startBg;
+export function removeBg() {
+  const bgDiv = document.querySelector('.bg-moving-div-container');
+  bgDiv.remove();
+}
