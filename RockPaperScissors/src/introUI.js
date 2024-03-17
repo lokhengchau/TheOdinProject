@@ -1,4 +1,4 @@
-import './css/UI.css';
+import './css/introUI.css';
 
 import { removeBg } from './background';
 
@@ -71,11 +71,11 @@ function transitionIntroGame() {
   });
 }
 
-function startUI() {
+function startIntroUI() {
   document.body.append(createIntroUI());
   const btnStart = document.getElementById('btn-start');
 
   btnStart.addEventListener('click', () => transitionIntroGame());
 }
 
-export default startUI;
+export default startIntroUI;
