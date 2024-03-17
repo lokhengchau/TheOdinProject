@@ -1,7 +1,7 @@
 import './css/style.css';
 
 import { startBg } from './background';
-import startUI from './introUI';
+import startintroUI from './introUI';
 
 startBg();
-startUI();
+startintroUI();

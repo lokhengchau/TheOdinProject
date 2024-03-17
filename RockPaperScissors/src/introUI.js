@@ -1,13 +1,7 @@
 import './css/introUI.css';
 
 import { removeBg } from './background';
-
-function createGameUI() {
-  const gameDiv = document.createElement('div');
-  gameDiv.classList.add('game-wrapper');
-  gameDiv.innerText = 'I am here';
-  return gameDiv;
-}
+import startGameUI from './gameUI';
 
 function createIntroUI() {
   const divWrap = document.createElement('div');
@@ -63,7 +57,7 @@ function transitionIntroGame() {
     removeBg();
     removeIntroDiv();
     divFadeIn.remove();
-    document.body.append(createGameUI());
+    startGameUI();
     const divFadeOut = fadeOutCurtain();
     divFadeOut.addEventListener('animationend', () => {
       divFadeOut.remove();
