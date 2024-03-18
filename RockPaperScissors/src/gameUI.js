@@ -1,5 +1,7 @@
 import './css/gameUI.css';
 
+import gameRun from './gameControl';
+
 import rockImg from './assets/rock.png';
 import paperImg from './assets/paper.png';
 import scissorsImg from './assets/scissors.png';
@@ -36,14 +38,20 @@ function playerChoicePanel() {
     switch (type) {
       case 'rock':
         img.src = rockImg;
+        btn.setAttribute('data-choice', 'rock');
         break;
       case 'paper':
         img.src = paperImg;
+        btn.setAttribute('data-choice', 'paper');
         break;
       default:
         img.src = scissorsImg;
+        btn.setAttribute('data-choice', 'scissors');
     }
     btn.append(img);
+    btn.addEventListener('click', () => {
+      gameRun(btn.dataset.choice);
+    });
 
     return btn;
   }
