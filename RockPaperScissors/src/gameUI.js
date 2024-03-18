@@ -1,6 +1,27 @@
+import './css/gameUI.css';
+
 import rockImg from './assets/rock.png';
 import paperImg from './assets/paper.png';
 import scissorsImg from './assets/scissors.png';
+
+function gameMainScreen() {
+  const mainScreenDiv = document.createElement('div');
+  mainScreenDiv.classList.add('main-screen-wraper');
+  const computerChoiceDiv = document.createElement('div');
+  computerChoiceDiv.classList.add('choice-img-wrapper');
+  const computerChoiceImg = document.createElement('img');
+  computerChoiceImg.id = 'computer-choice-img';
+  computerChoiceDiv.append(computerChoiceImg);
+
+  const playerChoiceDiv = document.createElement('div');
+  playerChoiceDiv.classList.add('choice-img-wrapper');
+  const playerChoiceImg = document.createElement('img');
+  playerChoiceImg.id = 'player-choice-img';
+  playerChoiceDiv.append(playerChoiceImg);
+
+  mainScreenDiv.append(computerChoiceDiv, playerChoiceDiv);
+  return mainScreenDiv;
+}
 
 function playerChoicePanel() {
   const playerChoiceDiv = document.createElement('div');
@@ -38,16 +59,28 @@ function playerHistroyPanel(player = true) {
 
   const playerScoreDiv = document.createElement('div');
   playerScoreDiv.classList.add('player-score-wrapper');
-  playerScoreDiv.innerText = player ? 'Player' : 'Computer';
+  playerScoreDiv.innerText = player ? 'Player: ' : 'Computer: ';
+  const scoreSpan = document.createElement('span');
+  scoreSpan.id = player ? 'player-score' : 'computer-score';
+  scoreSpan.innerText = '0';
+  playerScoreDiv.append(scoreSpan);
 
-  playerHistroyDiv.append(playerScoreDiv);
+  const choiceHistoryDiv = document.createElement('div');
+  choiceHistoryDiv.classList.add('choice-history-wrapper');
+
+  const choiceStatsDiv = document.createElement('div');
+  choiceStatsDiv.classList.add('choice-stats-wrapper');
+
+  playerHistroyDiv.append(playerScoreDiv, choiceHistoryDiv, choiceStatsDiv);
 
   return playerHistroyDiv;
 }
 
 function createGameUI() {
   const gameDiv = document.createElement('div');
+  gameDiv.classList.add('game-UI-wrapper');
 
+  gameDiv.append(gameMainScreen());
   gameDiv.append(playerChoicePanel());
   gameDiv.append(playerHistroyPanel(true));
   gameDiv.append(playerHistroyPanel(false));
