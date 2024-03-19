@@ -17,6 +17,10 @@ function gameMainScreen() {
   computerChoiceImg.src = readyImg;
   computerChoiceDiv.append(computerChoiceImg);
 
+  const gameMessageP = document.createElement('p');
+  gameMessageP.id = 'game-message';
+  gameMessageP.innerText = 'Make your choice.';
+
   const playerChoiceDiv = document.createElement('div');
   playerChoiceDiv.classList.add('choice-img-wrapper');
   const playerChoiceImg = document.createElement('img');
@@ -24,7 +28,7 @@ function gameMainScreen() {
   playerChoiceImg.src = readyImg;
   playerChoiceDiv.append(playerChoiceImg);
 
-  mainScreenDiv.append(computerChoiceDiv, playerChoiceDiv);
+  mainScreenDiv.append(computerChoiceDiv, gameMessageP, playerChoiceDiv);
   return mainScreenDiv;
 }
 

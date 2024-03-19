@@ -134,6 +134,39 @@ function showChoices(playerChoice, computerChoice) {
   changeImg(computerChoice, false);
 }
 
+function updateGameMessage(input) {
+  const gameMessageP = document.getElementById('game-message');
+
+  switch (input) {
+    case 'start':
+      gameMessageP.innerText = 'Make your choice.';
+      break;
+    case 'ready':
+      gameMessageP.innerText = 'Rock! paper! scissors!';
+      break;
+    case 'tie':
+      gameMessageP.innerText = 'Shoot!';
+      setTimeout(() => {
+        gameMessageP.innerText = "It's a tie!";
+      }, 500);
+      break;
+    case 'player':
+      gameMessageP.innerText = 'Shoot!';
+      setTimeout(() => {
+        gameMessageP.innerText = 'You win!';
+      }, 500);
+      break;
+    case 'computer':
+      gameMessageP.innerText = 'Shoot!';
+      setTimeout(() => {
+        gameMessageP.innerText = 'Computer wins!';
+      }, 500);
+      break;
+    default:
+      break;
+  }
+}
+
 function randomComputerChoice() {
   const computerChoice = Math.floor(Math.random() * 3);
   switch (computerChoice) {
@@ -151,24 +184,32 @@ async function gameRun(playerChoice) {
   playerRecord.choose(playerChoice);
   computerRecord.choose(computerChoice);
   hidePlayerButtons();
+  updateGameMessage('ready');
   await runAnimation();
-  showPlayerButtons();
   showChoices(playerChoice, computerChoice);
 
   if (computerChoice === playerChoice) {
     playerRecord.draw();
     computerRecord.draw();
+    updateGameMessage('tie');
   } else if ((computerChoice === 'rock' && playerChoice === 'paper')
     || (computerChoice === 'paper' && playerChoice === 'scissors')
     || (computerChoice === 'scissors' && playerChoice === 'rock')) {
     playerRecord.win();
     computerRecord.lose();
     updatePlayerScoreDisplay();
+    updateGameMessage('player');
   } else {
     computerRecord.win();
     playerRecord.lose();
     updateComputerScoreDisplay();
+    updateGameMessage('computer');
   }
+
+  setTimeout(() => {
+    showPlayerButtons();
+    updateGameMessage('start');
+  }, 2000);
 }
 
 export default gameRun;
