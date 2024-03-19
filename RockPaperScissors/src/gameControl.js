@@ -2,27 +2,21 @@ function runAnimation() {
   const playerChoiceImg = document.getElementById('player-choice-img');
   const computerChoiceImg = document.getElementById('computer-choice-img');
 
-  const promisePlayerAnimationEnd = new Promise((resolve) => {
-    function onAnimationEndFn() {
-      this.classList.remove('animate-choice');
-      this.removeEventListener('animationend', onAnimationEndFn);
-      resolve();
-    }
+  function promiseAnimationEnd(img) {
+    return new Promise((resolve) => {
+      function onAnimationEndFn() {
+        this.classList.remove('animate-choice');
+        this.removeEventListener('animationend', onAnimationEndFn);
+        resolve();
+      }
 
-    playerChoiceImg.addEventListener('animationend', onAnimationEndFn);
-    playerChoiceImg.classList.add('animate-choice');
-  });
+      img.addEventListener('animationend', onAnimationEndFn);
+      img.classList.add('animate-choice');
+    });
+  }
 
-  const promiseComputerAnimationEnd = new Promise((resolve) => {
-    function onAnimationEndFn() {
-      this.classList.remove('animate-choice');
-      this.removeEventListener('animationend', onAnimationEndFn);
-      resolve();
-    }
-
-    computerChoiceImg.addEventListener('animationend', onAnimationEndFn);
-    computerChoiceImg.classList.add('animate-choice');
-  });
+  const promisePlayerAnimationEnd = promiseAnimationEnd(playerChoiceImg);
+  const promiseComputerAnimationEnd = promiseAnimationEnd(computerChoiceImg);
 
   return Promise.all([promiseComputerAnimationEnd, promisePlayerAnimationEnd]);
 }
