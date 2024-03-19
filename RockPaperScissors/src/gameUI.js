@@ -9,7 +9,7 @@ import readyImg from './assets/ready.png';
 
 function gameMainScreen() {
   const mainScreenDiv = document.createElement('div');
-  mainScreenDiv.classList.add('main-screen-wraper');
+  mainScreenDiv.classList.add('main-screen-wrapper');
   const computerChoiceDiv = document.createElement('div');
   computerChoiceDiv.classList.add('choice-img-wrapper');
   const computerChoiceImg = document.createElement('img');
@@ -91,10 +91,10 @@ function createGameUI() {
   const gameDiv = document.createElement('div');
   gameDiv.classList.add('game-UI-wrapper');
 
+  gameDiv.append(playerHistroyPanel(false));
   gameDiv.append(gameMainScreen());
   gameDiv.append(playerChoicePanel());
   gameDiv.append(playerHistroyPanel(true));
-  gameDiv.append(playerHistroyPanel(false));
 
   return gameDiv;
 }

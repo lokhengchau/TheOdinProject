@@ -1,9 +1,58 @@
-.choice-img-wrapper img {
+.game-UI-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: 1000px;
+  padding: 50px 0;
+  border: 5px solid grey;
+  border-radius: 30px;
+  box-shadow: 15px 15px 5px 5px hsla(0, 0%, 83%, .7);
+}
+
+.main-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.choice-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 200px;
+  height: 200px;
+}
+
+.choice-img-wrapper img {
+  width: 150px;
+}
+
+.player-choice-wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.choice-button {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 3px solid grey;
+}
+
+.choice-button:hover {
+  cursor: pointer;
 }
 
 .choice-button img {
-  width: 100px;
+  width: 80px;
 }
 
 .choice-button.hide-button {
