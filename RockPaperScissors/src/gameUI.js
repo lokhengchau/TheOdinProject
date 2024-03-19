@@ -5,6 +5,7 @@ import gameRun from './gameControl';
 import rockImg from './assets/rock.png';
 import paperImg from './assets/paper.png';
 import scissorsImg from './assets/scissors.png';
+import readyImg from './assets/ready.png';
 
 function gameMainScreen() {
   const mainScreenDiv = document.createElement('div');
@@ -13,12 +14,14 @@ function gameMainScreen() {
   computerChoiceDiv.classList.add('choice-img-wrapper');
   const computerChoiceImg = document.createElement('img');
   computerChoiceImg.id = 'computer-choice-img';
+  computerChoiceImg.src = readyImg;
   computerChoiceDiv.append(computerChoiceImg);
 
   const playerChoiceDiv = document.createElement('div');
   playerChoiceDiv.classList.add('choice-img-wrapper');
   const playerChoiceImg = document.createElement('img');
   playerChoiceImg.id = 'player-choice-img';
+  playerChoiceImg.src = readyImg;
   playerChoiceDiv.append(playerChoiceImg);
 
   mainScreenDiv.append(computerChoiceDiv, playerChoiceDiv);

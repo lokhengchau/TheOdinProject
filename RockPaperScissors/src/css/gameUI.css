@@ -1,10 +1,13 @@
 .choice-img-wrapper img {
-  content: url('../assets/ready.png');
   width: 200px;
 }
 
 .choice-button img {
   width: 100px;
+}
+
+.choice-button.hide-button {
+  visibility: hidden;
 }
 
 #player-choice-img.animate-choice,
