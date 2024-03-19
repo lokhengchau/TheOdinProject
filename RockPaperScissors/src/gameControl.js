@@ -1,3 +1,32 @@
+function runAnimation() {
+  const playerChoiceImg = document.getElementById('player-choice-img');
+  const computerChoiceImg = document.getElementById('computer-choice-img');
+
+  const promisePlayerAnimationEnd = new Promise((resolve) => {
+    function onAnimationEndFn() {
+      this.classList.remove('animate-choice');
+      this.removeEventListener('animationend', onAnimationEndFn);
+      resolve();
+    }
+
+    playerChoiceImg.addEventListener('animationend', onAnimationEndFn);
+    playerChoiceImg.classList.add('animate-choice');
+  });
+
+  const promiseComputerAnimationEnd = new Promise((resolve) => {
+    function onAnimationEndFn() {
+      this.classList.remove('animate-choice');
+      this.removeEventListener('animationend', onAnimationEndFn);
+      resolve();
+    }
+
+    computerChoiceImg.addEventListener('animationend', onAnimationEndFn);
+    computerChoiceImg.classList.add('animate-choice');
+  });
+
+  return Promise.all([promiseComputerAnimationEnd, promisePlayerAnimationEnd]);
+}
+
 function randomComputerChoice() {
   const computerChoice = Math.floor(Math.random() * 3);
   switch (computerChoice) {
@@ -10,8 +39,10 @@ function randomComputerChoice() {
   }
 }
 
-function gameRun(playerChoice) {
+async function gameRun(playerChoice) {
   const computerChoice = randomComputerChoice();
+  await runAnimation();
+  alert('hey it works');
 
   // start animation function
   if (computerChoice === playerChoice) {
