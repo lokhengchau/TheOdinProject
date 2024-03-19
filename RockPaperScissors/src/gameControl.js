@@ -6,10 +6,56 @@ import readyImg from './assets/ready.png';
 class Record {
   constructor() {
     this.score = 0;
+    this.loss = 0;
+    this.tie = 0;
+    this.rock = 0;
+    this.paper = 0;
+    this.scissors = 0;
   }
 
   win() {
     this.score += 1;
+  }
+
+  lose() {
+    this.loss += 1;
+  }
+
+  draw() {
+    this.tie += 1;
+  }
+
+  choose(choice) {
+    switch (choice) {
+      case 'paper':
+        this.paper += 1;
+        break;
+      case 'rock':
+        this.rock += 1;
+        break;
+      default:
+        this.scissors += 1;
+    }
+  }
+
+  get totalGame() {
+    return this.score + this.loss + this.tie;
+  }
+
+  get winRate() {
+    return this.score / this.totalGame();
+  }
+
+  get paperRate() {
+    return this.paper / this.totalGame();
+  }
+
+  get rockRate() {
+    return this.rock / this.totalGame();
+  }
+
+  get scissorsRate() {
+    return this.scissors / this.totalGame();
   }
 }
 
@@ -102,20 +148,25 @@ function randomComputerChoice() {
 
 async function gameRun(playerChoice) {
   const computerChoice = randomComputerChoice();
+  playerRecord.choose(playerChoice);
+  computerRecord.choose(computerChoice);
   hidePlayerButtons();
   await runAnimation();
   showPlayerButtons();
   showChoices(playerChoice, computerChoice);
 
   if (computerChoice === playerChoice) {
-    // run draw
+    playerRecord.draw();
+    computerRecord.draw();
   } else if ((computerChoice === 'rock' && playerChoice === 'paper')
     || (computerChoice === 'paper' && playerChoice === 'scissors')
     || (computerChoice === 'scissors' && playerChoice === 'rock')) {
     playerRecord.win();
+    computerRecord.lose();
     updatePlayerScoreDisplay();
   } else {
     computerRecord.win();
+    playerRecord.lose();
     updateComputerScoreDisplay();
   }
 }
