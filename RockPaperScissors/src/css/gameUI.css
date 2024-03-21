@@ -71,6 +71,15 @@
   animation-direction: reverse;
 }
 
+.choice-history-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.choice-history-wrapper img {
+  width: 60px;
+}
+
 @keyframes animation-choice {
   from {
     transform: translateX(0%);

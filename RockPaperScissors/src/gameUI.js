@@ -82,6 +82,7 @@ function playerHistroyPanel(player = true) {
 
   const choiceHistoryDiv = document.createElement('div');
   choiceHistoryDiv.classList.add('choice-history-wrapper');
+  choiceHistoryDiv.id = player ? 'player-choice-history' : 'computer-choice-history';
 
   const choiceStatsDiv = document.createElement('div');
   choiceStatsDiv.classList.add('choice-stats-wrapper');

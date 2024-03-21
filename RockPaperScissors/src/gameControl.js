@@ -59,6 +59,9 @@ class Record {
     return this.scissors / this.totalGame();
   }
 
+  /**
+   * @param {(arg0: string) => void} choice
+   */
   set recordChoice(choice) {
     if (this.choiceRecord.length >= 10) {
       this.choiceRecord.shift();
@@ -175,6 +178,30 @@ function updateGameMessage(input) {
   }
 }
 
+function updateChoiceRecordDisplay(playerArr, computerArr) {
+  const playerChoiceHistoryDiv = document.getElementById('player-choice-history');
+  const computerChoiceHistoryDiv = document.getElementById('computer-choice-history');
+  playerChoiceHistoryDiv.innerHTML = '';
+  computerChoiceHistoryDiv.innerHTML = '';
+
+  function appendImg(arr, div) {
+    arr.forEach((choice) => {
+      const img = document.createElement('img');
+      if (choice === 'rock') {
+        img.src = rockImg;
+      } else if (choice === 'paper') {
+        img.src = paperImg;
+      } else {
+        img.src = scissorsImg;
+      }
+      div.append(img);
+    });
+  }
+
+  appendImg(playerArr, playerChoiceHistoryDiv);
+  appendImg(computerArr, computerChoiceHistoryDiv);
+}
+
 function randomComputerChoice() {
   const computerChoice = Math.floor(Math.random() * 3);
   switch (computerChoice) {
@@ -195,8 +222,8 @@ async function gameRun(playerChoice) {
   updateGameMessage('ready');
   await runAnimation();
   showChoices(playerChoice, computerChoice);
-  playerRecord.recordChoice(playerChoice);
-  computerRecord.recordChoice(computerChoice);
+  playerRecord.recordChoice = playerChoice;
+  computerRecord.recordChoice = computerChoice;
 
   if (computerChoice === playerChoice) {
     playerRecord.draw();
@@ -215,6 +242,8 @@ async function gameRun(playerChoice) {
     updateComputerScoreDisplay();
     updateGameMessage('computer');
   }
+
+  updateChoiceRecordDisplay(playerRecord.choiceRecord, computerRecord.choiceRecord);
 
   setTimeout(() => {
     showPlayerButtons();
