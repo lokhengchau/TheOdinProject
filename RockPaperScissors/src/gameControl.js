@@ -185,7 +185,7 @@ function updateChoiceRecordDisplay(playerArr, computerArr) {
   computerChoiceHistoryDiv.innerHTML = '';
 
   function appendImg(arr, div) {
-    arr.forEach((choice) => {
+    arr.forEach((choice, index) => {
       const img = document.createElement('img');
       if (choice === 'rock') {
         img.src = rockImg;
@@ -193,6 +193,10 @@ function updateChoiceRecordDisplay(playerArr, computerArr) {
         img.src = paperImg;
       } else {
         img.src = scissorsImg;
+      }
+
+      if (index === 0) {
+        img.classList.add('recent-choice');
       }
       div.append(img);
     });

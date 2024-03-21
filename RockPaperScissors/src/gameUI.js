@@ -70,7 +70,7 @@ function playerChoicePanel() {
 
 function playerHistroyPanel(player = true) {
   const playerHistroyDiv = document.createElement('div');
-  playerHistroyDiv.classList.add('choice-history-wrapper');
+  playerHistroyDiv.classList.add('player-info-panel-wrapper');
 
   const playerScoreDiv = document.createElement('div');
   playerScoreDiv.classList.add('player-score-wrapper');
