@@ -11,6 +11,7 @@ class Record {
     this.rock = 0;
     this.paper = 0;
     this.scissors = 0;
+    this.choiceRecord = [];
   }
 
   win() {
@@ -56,6 +57,13 @@ class Record {
 
   get scissorsRate() {
     return this.scissors / this.totalGame();
+  }
+
+  set recordChoice(choice) {
+    if (this.choiceRecord.length >= 10) {
+      this.choiceRecord.shift();
+    }
+    this.choiceRecord.unshift(choice);
   }
 }
 
@@ -187,6 +195,8 @@ async function gameRun(playerChoice) {
   updateGameMessage('ready');
   await runAnimation();
   showChoices(playerChoice, computerChoice);
+  playerRecord.recordChoice(playerChoice);
+  computerRecord.recordChoice(computerChoice);
 
   if (computerChoice === playerChoice) {
     playerRecord.draw();
