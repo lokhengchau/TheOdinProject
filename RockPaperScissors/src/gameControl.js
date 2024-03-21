@@ -64,7 +64,7 @@ class Record {
    */
   set recordChoice(choice) {
     if (this.choiceRecord.length >= 10) {
-      this.choiceRecord.shift();
+      this.choiceRecord.pop();
     }
     this.choiceRecord.unshift(choice);
   }
