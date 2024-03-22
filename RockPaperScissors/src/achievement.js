@@ -49,7 +49,7 @@ function losingStreak(playerRecord) {
 }
 
 function drawingStreak(playerRecord) {
-  const streak = playerRecord.streak.reduce((total, result) => total + (result === 'draw'), 0);
+  const streak = playerRecord.streak.reduce((total, result) => total + (result === 'tie'), 0);
   if (streak === 5) return true;
   return false;
 }
@@ -61,7 +61,7 @@ const achievementArray = [
     firstWin,
   ),
   new Achievement(
-    'Fist Loss Lesson',
+    'First Loss Lesson',
     'Lose your first game',
     firstLoss,
   ),
