@@ -92,9 +92,7 @@
 }
 
 .choice-history-wrapper .recent-choice {
-  border: 1px solid darkgrey;
-  width: 40px;
-  padding: 5px;
+  width: 45px;
 }
 
 @keyframes animation-choice {
