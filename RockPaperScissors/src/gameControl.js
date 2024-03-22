@@ -73,6 +73,10 @@ class Record {
 const playerRecord = new Record();
 const computerRecord = new Record();
 
+export function getPlayerRecord() {
+  return playerRecord;
+}
+
 function updatePlayerScoreDisplay() {
   const span = document.getElementById('player-score');
   span.innerText = playerRecord.score;
