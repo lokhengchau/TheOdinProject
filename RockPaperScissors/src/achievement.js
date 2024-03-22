@@ -7,21 +7,41 @@ class Achievement {
   }
 }
 
+function displayAchievement(achievement) {
+  const achievementPanelDiv = document.querySelector('.achievement-wrapper');
+  const achievementDiv = document.createElement('div');
+  achievementDiv.classList = 'achievement';
+
+  const titleH2 = document.createElement('h2');
+  titleH2.innerText = achievement.title;
+  const descriptionP = document.createElement('p');
+  descriptionP.innerText = achievement.description;
+
+  achievementDiv.append(titleH2, descriptionP);
+  achievementPanelDiv.append(achievementDiv);
+  setTimeout(() => {
+    achievementDiv.remove();
+  }, 3000);
+}
+
 function firstWin(playerRecord) {
   if (playerRecord.score === 1) {
     this.achieved = true;
+    displayAchievement(this);
   }
 }
 
 function firstLoss(playerRecord) {
   if (playerRecord.loss === 1) {
     this.achieved = true;
+    displayAchievement(this);
   }
 }
 
 function firstTie(playerRecord) {
   if (playerRecord.tie === 1) {
     this.achieved = true;
+    displayAchievement(this);
   }
 }
 
