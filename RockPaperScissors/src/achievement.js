@@ -36,6 +36,24 @@ function tenLosses(playerRecord) {
   return false;
 }
 
+function winningStreak(playerRecord) {
+  const streak = playerRecord.winningStreak.reduce((total, result) => total + (result === 'win'), 0);
+  if (streak === 5) return true;
+  return false;
+}
+
+function losingStreak(playerRecord) {
+  const streak = playerRecord.winningStreak.reduce((total, result) => total + (result === 'loss'), 0);
+  if (streak === 5) return true;
+  return false;
+}
+
+function drawingStreak(playerRecord) {
+  const streak = playerRecord.winningStreak.reduce((total, result) => total + (result === 'draw'), 0);
+  if (streak === 5) return true;
+  return false;
+}
+
 const achievementArray = [
   new Achievement(
     'First Step Success',
@@ -61,6 +79,21 @@ const achievementArray = [
     'Resilient Contestant',
     'Have a total of 10 losses',
     tenLosses,
+  ),
+  new Achievement(
+    'Unstoppable Streak',
+    'Win 5 games in a row',
+    winningStreak,
+  ),
+  new Achievement(
+    'Unyielding Adversity',
+    'Lose 5 games in a row',
+    losingStreak,
+  ),
+  new Achievement(
+    'Stalement Specialist',
+    'Draw 5 games in a row',
+    drawingStreak,
   ),
 ];
 
