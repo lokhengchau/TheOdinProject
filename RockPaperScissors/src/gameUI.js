@@ -92,6 +92,12 @@ function playerHistroyPanel(player = true) {
   return playerHistroyDiv;
 }
 
+function createAchievementPanel() {
+  const achievementDiv = document.createElement('div');
+  achievementDiv.classList.add('achievement-wrapper');
+  return achievementDiv;
+}
+
 function createGameUI() {
   const gameDiv = document.createElement('div');
   gameDiv.classList.add('game-UI-wrapper');
@@ -105,6 +111,7 @@ function createGameUI() {
 }
 
 function startGameUI() {
+  document.body.append(createAchievementPanel());
   document.body.append(createGameUI());
 }
 

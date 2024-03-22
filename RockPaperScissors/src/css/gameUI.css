@@ -95,6 +95,12 @@
   width: 45px;
 }
 
+.achievement-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 @keyframes animation-choice {
   from {
     transform: translateX(0%);
