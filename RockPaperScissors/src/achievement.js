@@ -13,11 +13,33 @@ function firstWin(playerRecord) {
   }
 }
 
+function firstLoss(playerRecord) {
+  if (playerRecord.loss === 1) {
+    this.achieved = true;
+  }
+}
+
+function firstTie(playerRecord) {
+  if (playerRecord.tie === 1) {
+    this.achieved = true;
+  }
+}
+
 const achievementArray = [
   new Achievement(
     'First Step Success',
     'Winning your first game',
     firstWin,
+  ),
+  new Achievement(
+    'Fist Loss Lesson',
+    'Losing your first game',
+    firstLoss,
+  ),
+  new Achievement(
+    'Opening Deadlock',
+    'Having your first tied game',
+    firstTie,
   ),
 ];
 
