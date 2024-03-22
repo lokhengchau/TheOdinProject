@@ -37,19 +37,19 @@ function tenLosses(playerRecord) {
 }
 
 function winningStreak(playerRecord) {
-  const streak = playerRecord.winningStreak.reduce((total, result) => total + (result === 'win'), 0);
+  const streak = playerRecord.streak.reduce((total, result) => total + (result === 'win'), 0);
   if (streak === 5) return true;
   return false;
 }
 
 function losingStreak(playerRecord) {
-  const streak = playerRecord.winningStreak.reduce((total, result) => total + (result === 'loss'), 0);
+  const streak = playerRecord.streak.reduce((total, result) => total + (result === 'loss'), 0);
   if (streak === 5) return true;
   return false;
 }
 
 function drawingStreak(playerRecord) {
-  const streak = playerRecord.winningStreak.reduce((total, result) => total + (result === 'draw'), 0);
+  const streak = playerRecord.streak.reduce((total, result) => total + (result === 'draw'), 0);
   if (streak === 5) return true;
   return false;
 }
