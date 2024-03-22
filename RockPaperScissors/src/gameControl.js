@@ -3,6 +3,8 @@ import paperImg from './assets/paper.png';
 import scissorsImg from './assets/scissors.png';
 import readyImg from './assets/ready.png';
 
+import checkAchievements from './achievement';
+
 class Record {
   constructor() {
     this.score = 0;
@@ -72,10 +74,6 @@ class Record {
 
 const playerRecord = new Record();
 const computerRecord = new Record();
-
-export function getPlayerRecord() {
-  return playerRecord;
-}
 
 function updatePlayerScoreDisplay() {
   const span = document.getElementById('player-score');
@@ -252,6 +250,7 @@ async function gameRun(playerChoice) {
   }
 
   updateChoiceRecordDisplay(playerRecord.choiceRecord, computerRecord.choiceRecord);
+  checkAchievements(playerRecord);
 
   setTimeout(() => {
     showPlayerButtons();

@@ -1,5 +1,3 @@
-import { getPlayerRecord } from "./gameControl";
-
 class Achievement {
   constructor(title, description, fn) {
     this.title = title;
@@ -9,14 +7,26 @@ class Achievement {
   }
 }
 
+function firstWin(playerRecord) {
+  if (playerRecord.score === 1) {
+    this.achieved = true;
+  }
+}
+
 const achievementArray = [
   new Achievement(
     'First Step Success',
     'Winning your first game',
-    (playerRecord) => {
-      if (playerRecord.win === 1) {
-        this.achieved = true;
-      }
-    },
+    firstWin,
   ),
 ];
+
+function checkAchievements(playerRecord) {
+  achievementArray.forEach((achievement) => {
+    if (achievement.achieved === false) {
+      achievement.activate(playerRecord);
+    }
+  });
+}
+
+export default checkAchievements;
