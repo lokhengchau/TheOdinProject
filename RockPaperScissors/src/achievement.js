@@ -26,21 +26,41 @@ function firstTie(playerRecord) {
   return false;
 }
 
+function tenWins(playerRecord) {
+  if (playerRecord.score === 10) return true;
+  return false;
+}
+
+function tenLosses(playerRecord) {
+  if (playerRecord.loss === 10) return true;
+  return false;
+}
+
 const achievementArray = [
   new Achievement(
     'First Step Success',
-    'Winning your first game',
+    'Win your first game',
     firstWin,
   ),
   new Achievement(
     'Fist Loss Lesson',
-    'Losing your first game',
+    'Lose your first game',
     firstLoss,
   ),
   new Achievement(
     'Opening Deadlock',
-    'Having your first tied game',
+    'Have your first tied game',
     firstTie,
+  ),
+  new Achievement(
+    'Tenacious Winner',
+    'Have a total of 10 wins',
+    tenWins,
+  ),
+  new Achievement(
+    'Resilient Contestant',
+    'Have a total of 10 losses',
+    tenLosses,
   ),
 ];
 
