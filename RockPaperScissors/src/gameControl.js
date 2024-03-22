@@ -14,18 +14,31 @@ class Record {
     this.paper = 0;
     this.scissors = 0;
     this.choiceRecord = [];
+    this.streak = [];
   }
 
   win() {
     this.score += 1;
+    if (this.streak.length >= 5) {
+      this.streak.pop();
+    }
+    this.streak.unshift('win');
   }
 
   lose() {
     this.loss += 1;
+    if (this.streak.length >= 5) {
+      this.streak.pop();
+    }
+    this.streak.unshift('loss');
   }
 
   draw() {
     this.tie += 1;
+    if (this.streak.length >= 5) {
+      this.streak.pop();
+    }
+    this.streak.unshift('tie');
   }
 
   choose(choice) {
