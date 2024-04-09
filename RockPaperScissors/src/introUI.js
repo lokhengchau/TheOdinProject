@@ -1,6 +1,7 @@
 import './css/introUI.css';
 
 import { removeBg } from './background';
+import { getAchivementsList, initAchievementArray } from './achievement';
 import startGameUI from './gameUI';
 
 function createIntroUI() {
@@ -65,11 +66,80 @@ function transitionIntroGame() {
   });
 }
 
+function achievementdialog() {
+  const dialog = document.createElement('dialog');
+  dialog.classList.add('achievement-dialog');
+
+  const h1 = document.createElement('h1');
+  h1.innerText = 'All Achievements';
+
+  const div = document.createElement('div');
+  div.id = 'achievement-list';
+
+  const btn = document.createElement('button');
+  btn.innerText = 'Close';
+
+  btn.addEventListener('click', () => {
+    dialog.classList.toggle('displayed');
+    dialog.close();
+  });
+
+  dialog.append(h1, div, btn);
+  return dialog;
+}
+
+function resetDialog() {
+  const dialog = document.createElement('dialog');
+  dialog.classList.add('reset-dialog');
+
+  const p = document.createElement('p');
+  p.innerText = 'Reset all achievement progress?';
+
+  const buttonConfirm = document.createElement('button');
+  buttonConfirm.innerText = 'Yes';
+
+  buttonConfirm.addEventListener('click', () => {
+    localStorage.removeItem('rpc-save');
+    initAchievementArray();
+    dialog.classList.toggle('displayed');
+    dialog.close();
+  });
+
+  const buttonCancel = document.createElement('button');
+  buttonCancel.innerText = 'Nevermind';
+
+  buttonCancel.addEventListener('click', () => {
+    dialog.close();
+    dialog.classList.toggle('displayed');
+  });
+
+  dialog.append(p, buttonConfirm, buttonCancel);
+  return dialog;
+}
+
 function startIntroUI() {
   document.body.append(createIntroUI());
-  const btnStart = document.getElementById('btn-start');
+  document.body.append(achievementdialog());
+  document.body.append(resetDialog());
 
+  const btnStart = document.getElementById('btn-start');
   btnStart.addEventListener('click', () => transitionIntroGame());
+
+  const btnAchievement = document.getElementById('btn-view-achievement');
+  const dialogAchievement = document.querySelector('.achievement-dialog');
+  btnAchievement.addEventListener('click', () => {
+    dialogAchievement.showModal();
+    dialogAchievement.classList.toggle('displayed');
+    getAchivementsList();
+  });
+
+  const dialogReset = document.querySelector('.reset-dialog');
+  const btnReset = document.getElementById('btn-reset');
+
+  btnReset.addEventListener('click', () => {
+    dialogReset.showModal();
+    dialogReset.classList.toggle('displayed');
+  });
 }
 
 export default startIntroUI;

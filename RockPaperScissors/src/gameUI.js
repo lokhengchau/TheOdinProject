@@ -1,6 +1,7 @@
 import './css/gameUI.css';
 
 import gameRun from './gameControl';
+import { getAchivementsList } from './achievement';
 
 import rockImg from './assets/rock.png';
 import paperImg from './assets/paper.png';
@@ -98,6 +99,20 @@ function createAchievementPanel() {
   return achievementDiv;
 }
 
+function createAchievementButton() {
+  const button = document.createElement('button');
+  button.innerText = 'View Achievements';
+
+  button.addEventListener('click', () => {
+    const dialog = document.querySelector('.achievement-dialog');
+    dialog.showModal();
+    dialog.classList.toggle('displayed');
+    getAchivementsList();
+  });
+
+  return button;
+}
+
 function createGameUI() {
   const gameDiv = document.createElement('div');
   gameDiv.classList.add('game-UI-wrapper');
@@ -106,7 +121,7 @@ function createGameUI() {
   gameDiv.append(gameMainScreen());
   gameDiv.append(playerChoicePanel());
   gameDiv.append(playerHistroyPanel(true));
-
+  gameDiv.append(createAchievementButton());
   return gameDiv;
 }
 

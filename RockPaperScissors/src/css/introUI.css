@@ -76,6 +76,75 @@
   animation-fill-mode: forwards;
 }
 
+.achievement-dialog {
+  padding: 50px 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.achievement-dialog.displayed {
+  display: flex;
+}
+
+#achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+#achievement-list .achievement-row {
+  height: 50px;
+  display: flex;
+  gap: 20px;
+  opacity: .5;
+}
+
+#achievement-list .achievement-row.achieved {
+  opacity: 1;
+}
+
+#achievement-list .achievement-row p {
+  color: rgb(97, 97, 97);
+}
+
+#achievement-list .achievement-row img {
+  width: 50px;
+}
+
+#achievement-list .achievement-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.reset-dialog {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.reset-dialog.displayed {
+  display: flex;
+}
+
+.reset-dialog p {
+  font-size: 1.3rem;
+}
+
 @keyframes increase-opacity {
   from {
     opacity: 0;

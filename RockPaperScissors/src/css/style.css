@@ -23,3 +23,21 @@ html {
   font-family: ManaSpace;
   font-size: 16px;
 }
+
+button {
+  font-family: inherit;
+  font-size: 1.2rem;
+  background-color: transparent;
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+button:active {
+  font-size: 1.15rem;
+}
