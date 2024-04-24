@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  <title>Calculator</title>
+</head>
+<body>
+  <main>
+    <div class="calculator-container">
+      <div id="input-display" class="focus"></div>
+      <div id="result-display"></div>
+      <div class="button-container">
+        <button type="button" class='btn-number' id="btn-1" data-key="1" data-code="Digit1" data-shift="false">1</button>
+        <button type="button" class='btn-number' id="btn-2" data-key="2" data-code="Digit2" data-shift="false">2</button>
+        <button type="button" class='btn-number' id="btn-3" data-key="3" data-code="Digit3" data-shift="false">3</button>
+        <button type="button" class='btn-number' id="btn-4" data-key="4" data-code="Digit4" data-shift="false">4</button>
+        <button type="button" class='btn-number' id="btn-5" data-key="5" data-code="Digit5" data-shift="false">5</button>
+        <button type="button" class='btn-number' id="btn-6" data-key="6" data-code="Digit6" data-shift="false">6</button>
+        <button type="button" class='btn-number' id="btn-7" data-key="7" data-code="Digit7" data-shift="false">7</button>
+        <button type="button" class='btn-number' id="btn-8" data-key="8" data-code="Digit8" data-shift="false">8</button>
+        <button type="button" class='btn-number' id="btn-9" data-key="9" data-code="Digit9" data-shift="false">9</button>
+        <button type="button" class='btn-number' id="btn-0" data-key="0" data-code="Digit0" data-shift="false">0</button>
+        <button type="button" class='btn-number' id="btn-decimal" data-key="." data-code="Period" data-shift="false">.</button>
+        <button type="button" class='btn-operation' id="btn-plus" data-key="+" data-code="Equal" data-shift="true">+</button>
+        <button type="button" class='btn-operation' id="btn-minus" data-key="-" data-code="Minus" data-shift="false">-</button>
+        <button type="button" class='btn-operation' id="btn-multiply" data-key="*" data-code="Digit8" data-shift="true">*</button>
+        <button type="button" class='btn-operation' id="btn-divide" data-key="/" data-code="Slash" data-shift="false">/</button>
+        <button type="button" class='btn-operation' id="btn-percent" data-key="%" data-code="Digit5" data-shift="true">%</button>  
+        <button type="button" class='btn-equal' id="btn-equal" data-key="=" data-code="Equal" data-shift="false">=</button>
+        <button type="button" class='btn-system' id="btn-clear-all" data-key="Escape" data-code="Escape" data-shift="false">CA</button>
+        <button type="button" class='btn-system' id="btn-backspace" data-key="Backspace" data-code="Backspace" data-shift="false">BS</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
